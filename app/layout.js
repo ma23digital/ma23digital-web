@@ -89,12 +89,8 @@ export default function RootLayout({ children }) {
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="RqOyLMyw8iVVVgjchf3ZnN9Wi6-nFppl7jLzUMGQhnk" />
         {/* Google AdSense Script Placeholder */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8864480583512848" 
+        crossorigin="anonymous"></script>
       </head>
       <body className="bg-slate-50 text-slate-800 antialiased">
         <Navbar />
