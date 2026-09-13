@@ -86,6 +86,8 @@ export default function RootLayout({ children }) {
     <html lang="id" className="scroll-smooth">
       <head>
         <link rel="icon" href="/logo.png" />
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="RqOyLMyw8iVVVgjchf3ZnN9Wi6-nFppl7jLzUMGQhnk" />
         {/* Google AdSense Script Placeholder */}
         <Script
           async
