@@ -1,47 +1,17 @@
 import './globals.css';
+import Navbar from './components/Navbar';
 
 export const metadata = {
-  title: 'MA23DIGITAL | Jasa Pembuatan Website, Custom System & Invoice Gratis',
-  description: 'Mitra teknologi terpercaya untuk jasa pembuatan website, kustomisasi Perfex CRM, sistem booking travel, hingga dokumentasi teknis dan alat pembuat invoice online gratis.',
-  keywords: [
-    'Jasa Pembuatan Website',
-    'Custom System Development',
-    'Customisasi Perfex CRM',
-    'Pembuataan Invoice Gratis',
-    'Dokumentasi Sistem',
-    'MA23DIGITAL',
-    'Maulana Septiyadi'
-  ],
-  authors: [{ name: 'Maulana Septiyadi' }],
-  openGraph: {
-    title: 'MA23DIGITAL | Jasa Pembuatan Website & Custom System',
-    description: 'Solusi pengembangan software, kustomisasi sistem, dan alat pembuat invoice online gratis.',
-    url: 'https://ma23digital.vercel.app',
-    siteName: 'MA23DIGITAL',
-    images: [
-      {
-        url: '/logo.png',
-        width: 800,
-        height: 800,
-        alt: 'MA23DIGITAL Logo',
-      },
-    ],
-    locale: 'id_ID',
-    type: 'website',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  title: 'ma23digital | Jasa Pengembang Web & Rekayasa Perangkat Lunak Bandung',
+  description: 'Portofolio ma23digital - Layanan pembuatan aplikasi web kustom, optimasi backend Laravel/CI4, serta pembuat invoice gratis online.',
+  keywords: ['jasa pembuatan web bandung', 'software engineer bandung', 'pembuat invoice gratis', 'ma23digital'],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id">
-      <head>
-        <link rel="icon" href="/logo.png" priority="true" />
-      </head>
-      <body className="bg-slate-900 text-slate-100 antialiased">
+    <html lang="id" className="scroll-smooth">
+      <body className="bg-slate-50 text-slate-800">
+        <Navbar />
         {children}
       </body>
     </html>
