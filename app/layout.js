@@ -1,3 +1,5 @@
+import './globals.css';
+
 export const metadata = {
   title: 'MA23DIGITAL | Jasa Pembuatan Website, Custom System & Invoice Gratis',
   description: 'Mitra teknologi terpercaya untuk jasa pembuatan website, kustomisasi Perfex CRM, sistem booking travel, hingga dokumentasi teknis dan alat pembuat invoice online gratis.',
@@ -32,3 +34,16 @@ export const metadata = {
     follow: true,
   },
 };
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="id">
+      <head>
+        <link rel="icon" href="/logo.png" priority="true" />
+      </head>
+      <body className="bg-slate-900 text-slate-100 antialiased">
+        {children}
+      </body>
+    </html>
+  );
+}
