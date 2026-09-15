@@ -204,27 +204,27 @@ export default function InvoicePage() {
 
       <div className="min-h-screen bg-slate-100 p-3 md:p-6 text-slate-800">
         {/* Tombol Aksi */}
-        <div className="max-w-4xl mx-auto mb-4 flex flex-wrap justify-between items-center gap-3 print:hidden">
+        <div className="max-w-4xl mx-auto mb-4 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 print:hidden">
           <Link
             href="/"
             className="text-xs md:text-sm font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1"
           >
             ← Kembali ke Beranda
           </Link>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 sm:flex gap-2">
             <button
               type="button"
               onClick={handlePrintOrPdf}
-              className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-lg text-xs md:text-sm transition shadow-sm flex items-center gap-1 cursor-pointer"
+              className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-lg text-xs md:text-sm transition shadow-sm flex items-center justify-center gap-1 cursor-pointer"
             >
-              🖨️ Cetak / Unduh PDF
+              🖨️ Cetak / PDF
             </button>
             <button
               type="button"
               onClick={handleExportExcel}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg text-xs md:text-sm transition shadow-sm flex items-center gap-1 cursor-pointer"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-lg text-xs md:text-sm transition shadow-sm flex items-center justify-center gap-1 cursor-pointer"
             >
-              📊 Unduh Excel (.csv)
+              📊 Unduh Excel
             </button>
           </div>
         </div>
@@ -232,12 +232,12 @@ export default function InvoicePage() {
         {/* CONTAINER INVOICE */}
         <div
           id="invoice-container"
-          className="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-md border border-slate-200 text-xs md:text-sm"
+          className="max-w-4xl mx-auto bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-md border border-slate-200 text-xs md:text-sm overflow-x-hidden"
         >
           {/* HEADER */}
-          <div className="grid grid-cols-12 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
             <div className="col-span-6 flex items-start">
-              <label className="w-40 h-20 border-2 border-dashed border-slate-300 rounded-lg flex flex-col justify-center items-center cursor-pointer hover:border-slate-400 overflow-hidden bg-slate-50 relative group">
+              <label className="w-36 h-20 sm:w-40 sm:h-20 border-2 border-dashed border-slate-300 rounded-lg flex flex-col justify-center items-center cursor-pointer hover:border-slate-400 overflow-hidden bg-slate-50 relative group">
                 {logo ? (
                   <img
                     src={logo}
@@ -263,35 +263,35 @@ export default function InvoicePage() {
               </label>
             </div>
 
-            <div className="col-span-6 text-right flex flex-col items-end">
-              <h1 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-wide mb-2">
+            <div className="col-span-6 flex flex-col items-start md:items-end justify-between md:justify-start">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-wide mb-2">
                 INVOICE
               </h1>
-              <div className="flex items-center gap-1.5 border border-slate-300 rounded-lg px-2.5 py-1 w-48 bg-white">
+              <div className="flex items-center gap-1.5 border border-slate-300 rounded-lg px-2.5 py-1 w-full sm:w-48 bg-white">
                 <span className="text-slate-400 font-bold">#</span>
                 <input
                   type="text"
                   value={invoiceNo}
                   onChange={(e) => setInvoiceNo(e.target.value)}
-                  className="w-full text-right font-semibold focus:outline-none text-slate-800 text-xs"
+                  className="w-full text-left md:text-right font-semibold focus:outline-none text-slate-800 text-xs"
                 />
               </div>
             </div>
           </div>
 
           {/* DETAIL PERUSAHAAN & FORM TANGGAL */}
-          <div className="grid grid-cols-12 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
             <div className="col-span-6">
               <input
                 type="text"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
                 placeholder="Nama Perusahaan Anda"
-                className="w-full border border-slate-300 rounded-lg p-2 font-semibold focus:outline-none focus:border-emerald-500 text-xs md:text-sm"
+                className="w-full border border-slate-300 rounded-lg p-2.5 font-semibold focus:outline-none focus:border-emerald-500 text-xs md:text-sm"
               />
             </div>
 
-            <div className="col-span-6 space-y-1.5">
+            <div className="col-span-6 space-y-2">
               <div className="flex items-center justify-between gap-2">
                 <label className="text-xs font-medium text-slate-600">
                   Tanggal
@@ -300,7 +300,7 @@ export default function InvoicePage() {
                   type="date"
                   value={invoiceDate}
                   onChange={(e) => setInvoiceDate(e.target.value)}
-                  className="border border-slate-300 rounded-lg px-2 py-1 text-xs w-40 text-right focus:outline-none focus:border-emerald-500"
+                  className="border border-slate-300 rounded-lg px-2 py-1.5 text-xs w-44 sm:w-40 text-right focus:outline-none focus:border-emerald-500"
                 />
               </div>
               <div className="flex items-center justify-between gap-2">
@@ -311,7 +311,7 @@ export default function InvoicePage() {
                   type="date"
                   value={dueDate}
                   onChange={(e) => setDueDate(e.target.value)}
-                  className="border border-slate-300 rounded-lg px-2 py-1 text-xs w-40 text-right focus:outline-none focus:border-emerald-500"
+                  className="border border-slate-300 rounded-lg px-2 py-1.5 text-xs w-44 sm:w-40 text-right focus:outline-none focus:border-emerald-500"
                 />
               </div>
               <div className="flex items-center justify-between gap-2">
@@ -322,16 +322,16 @@ export default function InvoicePage() {
                   type="text"
                   value={poNumber}
                   onChange={(e) => setPoNumber(e.target.value)}
-                  className="border border-slate-300 rounded-lg px-2 py-1 text-xs w-40 text-right focus:outline-none focus:border-emerald-500"
+                  className="border border-slate-300 rounded-lg px-2 py-1.5 text-xs w-44 sm:w-40 text-right focus:outline-none focus:border-emerald-500"
                 />
               </div>
             </div>
           </div>
 
           {/* ALAMAT PENAGIHAN */}
-          <div className="grid grid-cols-12 gap-4 mb-5">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
             <div className="col-span-6">
-              <label className="block text-[11px] font-semibold text-slate-600 mb-0.5">
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                 Tagihan kepada
               </label>
               <textarea
@@ -339,11 +339,11 @@ export default function InvoicePage() {
                 value={billTo}
                 onChange={(e) => setBillTo(e.target.value)}
                 placeholder="Nama / Perusahaan Klien"
-                className="w-full border border-slate-300 rounded-lg p-2 text-xs focus:outline-none focus:border-emerald-500"
+                className="w-full border border-slate-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-500"
               />
             </div>
             <div className="col-span-6">
-              <label className="block text-[11px] font-semibold text-slate-600 mb-0.5">
+              <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                 Alamat / Informasi Penagihan
               </label>
               <textarea
@@ -351,70 +351,95 @@ export default function InvoicePage() {
                 value={shipTo}
                 onChange={(e) => setShipTo(e.target.value)}
                 placeholder="(opsional)"
-                className="w-full border border-slate-300 rounded-lg p-2 text-xs focus:outline-none focus:border-emerald-500"
+                className="w-full border border-slate-300 rounded-lg p-2.5 text-xs focus:outline-none focus:border-emerald-500"
               />
             </div>
           </div>
 
-          {/* TABEL ITEM */}
-          <div className="mb-3">
-            <div className="bg-slate-900 text-white rounded-t-lg px-3 py-2 grid grid-cols-12 text-[11px] font-bold uppercase tracking-wider">
-              <div className="col-span-6 md:col-span-7">Deskripsi</div>
+          {/* TABEL ITEM (RESPONSIF CARD UNTUK HP / TABEL UNTUK DESKTOP) */}
+          <div className="mb-6">
+            {/* Header Tabel Desktop */}
+            <div className="hidden sm:grid grid-cols-12 bg-slate-900 text-white rounded-t-lg px-3 py-2 text-[11px] font-bold uppercase tracking-wider">
+              <div className="col-span-7">Deskripsi</div>
               <div className="col-span-2 text-center">Kuantitas</div>
               <div className="col-span-2 text-right">Harga Satuan</div>
-              <div className="col-span-2 md:col-span-1 text-right">Total</div>
+              <div className="col-span-1 text-right">Total</div>
             </div>
 
-            <div className="divide-y divide-slate-200 border-x border-b border-slate-200 rounded-b-lg">
-              {items.map((item) => (
+            <div className="space-y-3 sm:space-y-0 sm:divide-y sm:divide-slate-200 sm:border-x sm:border-b sm:border-slate-200 sm:rounded-b-lg">
+              {items.map((item, index) => (
                 <div
                   key={item.id}
-                  className="p-2 grid grid-cols-12 gap-2 items-center"
+                  className="p-3 sm:p-2 bg-slate-50 sm:bg-white rounded-xl sm:rounded-none border border-slate-200 sm:border-none grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-center"
                 >
-                  <div className="col-span-6 md:col-span-7 flex items-center gap-1.5">
+                  {/* Deskripsi */}
+                  <div className="col-span-1 sm:col-span-7 flex items-center gap-2">
                     <button
                       type="button"
                       onClick={() => removeItem(item.id)}
-                      className="text-slate-300 hover:text-rose-500 font-bold text-xs px-1 print:hidden cursor-pointer"
+                      className="text-rose-500 sm:text-slate-300 hover:text-rose-600 font-bold text-xs p-1 print:hidden cursor-pointer"
                       title="Hapus Baris"
                     >
                       ✕
                     </button>
-                    <input
-                      type="text"
-                      value={item.description}
-                      onChange={(e) =>
-                        updateItem(item.id, 'description', e.target.value)
-                      }
-                      placeholder="Deskripsi jasa / layanan software..."
-                      className="w-full border border-slate-300 rounded-lg px-2 py-1 text-xs focus:outline-none focus:border-emerald-500"
-                    />
+                    <div className="flex-1">
+                      <label className="block sm:hidden text-[10px] font-semibold text-slate-500 mb-0.5">
+                        Deskripsi Item #{index + 1}
+                      </label>
+                      <input
+                        type="text"
+                        value={item.description}
+                        onChange={(e) =>
+                          updateItem(item.id, 'description', e.target.value)
+                        }
+                        placeholder="Deskripsi jasa / layanan..."
+                        className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 sm:py-1 text-xs focus:outline-none focus:border-emerald-500 bg-white"
+                      />
+                    </div>
                   </div>
-                  <div className="col-span-2">
-                    <input
-                      type="number"
-                      min="1"
-                      value={item.quantity}
-                      onChange={(e) =>
-                        updateItem(item.id, 'quantity', e.target.value)
-                      }
-                      className="w-full border border-slate-300 rounded-lg px-2 py-1 text-xs text-center focus:outline-none focus:border-emerald-500"
-                    />
+
+                  {/* Kuantitas & Harga (Grid khusus HP agar sejajar rapi) */}
+                  <div className="grid grid-cols-2 sm:contents gap-2">
+                    <div className="col-span-1 sm:col-span-2">
+                      <label className="block sm:hidden text-[10px] font-semibold text-slate-500 mb-0.5">
+                        Kuantitas
+                      </label>
+                      <input
+                        type="number"
+                        min="1"
+                        value={item.quantity}
+                        onChange={(e) =>
+                          updateItem(item.id, 'quantity', e.target.value)
+                        }
+                        className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 sm:py-1 text-xs text-center focus:outline-none focus:border-emerald-500 bg-white"
+                      />
+                    </div>
+
+                    <div className="col-span-1 sm:col-span-2">
+                      <label className="block sm:hidden text-[10px] font-semibold text-slate-500 mb-0.5">
+                        Harga Satuan
+                      </label>
+                      <div className="flex items-center border border-slate-300 rounded-lg px-2 py-1.5 sm:py-1 bg-white">
+                        <span className="text-[10px] text-slate-400 mr-1">Rp</span>
+                        <input
+                          type="number"
+                          min="0"
+                          value={item.rate}
+                          onChange={(e) =>
+                            updateItem(item.id, 'rate', e.target.value)
+                          }
+                          className="w-full text-right text-xs focus:outline-none"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="col-span-2 flex items-center border border-slate-300 rounded-lg px-2 py-1 bg-white">
-                    <span className="text-[10px] text-slate-400 mr-1">Rp</span>
-                    <input
-                      type="number"
-                      min="0"
-                      value={item.rate}
-                      onChange={(e) =>
-                        updateItem(item.id, 'rate', e.target.value)
-                      }
-                      className="w-full text-right text-xs focus:outline-none"
-                    />
-                  </div>
-                  <div className="col-span-2 md:col-span-1 text-right text-xs font-semibold text-slate-800">
-                    IDR {formatNumber(item.quantity * item.rate)}
+
+                  {/* Total Baris */}
+                  <div className="col-span-1 sm:col-span-1 flex sm:flex-col justify-between sm:justify-center items-center sm:items-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200">
+                    <span className="text-[10px] text-slate-500 sm:hidden font-semibold">Total Baris:</span>
+                    <span className="text-xs font-bold text-slate-900">
+                      IDR {formatNumber(item.quantity * item.rate)}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -423,17 +448,17 @@ export default function InvoicePage() {
             <button
               type="button"
               onClick={addItem}
-              className="mt-2 w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-1.5 rounded-lg text-xs border border-slate-200 transition flex justify-center items-center gap-1 print:hidden cursor-pointer"
+              className="mt-3 w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-xs border border-slate-200 transition flex justify-center items-center gap-1 print:hidden cursor-pointer shadow-sm"
             >
-              <span>+</span> Item baris
+              <span>+</span> Tambah Item Baris
             </button>
           </div>
 
-          {/* FOOTER & TOTAL */}
-          <div className="grid grid-cols-12 gap-4 pt-2">
+          {/* FOOTER CATATAN & TOTAL */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
             <div className="col-span-6 space-y-3">
               <div>
-                <label className="block text-[11px] font-semibold text-slate-600 mb-0.5">
+                <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                   Catatan
                 </label>
                 <textarea
@@ -441,11 +466,11 @@ export default function InvoicePage() {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Informasi rekening bank, metode transfer, dll."
-                  className="w-full border border-slate-300 focus:border-emerald-500 rounded-lg p-2 text-xs focus:outline-none"
+                  className="w-full border border-slate-300 focus:border-emerald-500 rounded-lg p-2.5 text-xs focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-semibold text-slate-600 mb-0.5">
+                <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                   Ketentuan
                 </label>
                 <textarea
@@ -453,12 +478,12 @@ export default function InvoicePage() {
                   value={terms}
                   onChange={(e) => setTerms(e.target.value)}
                   placeholder="Syarat pembayaran DP, masa garansi perbaikan"
-                  className="w-full border border-slate-300 focus:border-emerald-500 rounded-lg p-2 text-xs focus:outline-none"
+                  className="w-full border border-slate-300 focus:border-emerald-500 rounded-lg p-2.5 text-xs focus:outline-none"
                 />
               </div>
             </div>
 
-            <div className="col-span-6 space-y-2">
+            <div className="col-span-6 space-y-2.5 bg-slate-50 sm:bg-white p-4 sm:p-0 rounded-xl border sm:border-none border-slate-200">
               <div className="flex justify-between items-center text-xs font-medium text-slate-700">
                 <span>Subtotal</span>
                 <span className="font-bold">{formatCurrency(subtotal)}</span>
@@ -466,7 +491,7 @@ export default function InvoicePage() {
 
               <div className="flex justify-between items-center gap-2">
                 <span className="text-xs font-medium text-slate-700">Pajak</span>
-                <div className="flex items-center gap-1 border border-slate-300 rounded-lg px-2 py-0.5 w-24 bg-white">
+                <div className="flex items-center gap-1 border border-slate-300 rounded-lg px-2 py-1 w-28 bg-white">
                   <input
                     type="number"
                     min="0"
@@ -479,7 +504,7 @@ export default function InvoicePage() {
                 </div>
               </div>
 
-              <div className="flex gap-3 text-[11px] font-bold text-emerald-600 pt-0.5 print:hidden">
+              <div className="flex gap-4 text-[11px] font-bold text-emerald-600 pt-1 print:hidden">
                 {!showDiscount && (
                   <button
                     type="button"
@@ -503,7 +528,7 @@ export default function InvoicePage() {
               {showDiscount && (
                 <div className="flex justify-between items-center gap-2 text-xs">
                   <span className="text-slate-700">Diskon</span>
-                  <div className="flex items-center border border-slate-300 rounded-lg px-2 py-0.5 w-32 bg-white">
+                  <div className="flex items-center border border-slate-300 rounded-lg px-2 py-1 w-36 bg-white">
                     <span className="text-[10px] text-slate-400 mr-1">Rp</span>
                     <input
                       type="number"
@@ -514,7 +539,7 @@ export default function InvoicePage() {
                     <button
                       type="button"
                       onClick={() => setShowDiscount(false)}
-                      className="ml-1 text-slate-400 hover:text-rose-500 font-bold text-[10px] print:hidden cursor-pointer"
+                      className="ml-1.5 text-slate-400 hover:text-rose-500 font-bold text-xs print:hidden cursor-pointer"
                     >
                       ✕
                     </button>
@@ -525,7 +550,7 @@ export default function InvoicePage() {
               {showShipping && (
                 <div className="flex justify-between items-center gap-2 text-xs">
                   <span className="text-slate-700">Pengiriman</span>
-                  <div className="flex items-center border border-slate-300 rounded-lg px-2 py-0.5 w-32 bg-white">
+                  <div className="flex items-center border border-slate-300 rounded-lg px-2 py-1 w-36 bg-white">
                     <span className="text-[10px] text-slate-400 mr-1">Rp</span>
                     <input
                       type="number"
@@ -536,7 +561,7 @@ export default function InvoicePage() {
                     <button
                       type="button"
                       onClick={() => setShowShipping(false)}
-                      className="ml-1 text-slate-400 hover:text-rose-500 font-bold text-[10px] print:hidden cursor-pointer"
+                      className="ml-1.5 text-slate-400 hover:text-rose-500 font-bold text-xs print:hidden cursor-pointer"
                     >
                       ✕
                     </button>
@@ -544,16 +569,16 @@ export default function InvoicePage() {
                 </div>
               )}
 
-              <hr className="border-slate-200 my-1" />
+              <hr className="border-slate-200 my-1.5" />
 
               <div className="flex justify-between items-center text-base font-black text-slate-900">
                 <span>Total</span>
                 <span>{formatCurrency(total)}</span>
               </div>
 
-              <div className="flex justify-between items-center gap-2 text-xs font-semibold text-slate-700">
+              <div className="flex justify-between items-center gap-2 text-xs font-semibold text-slate-700 pt-1">
                 <span>Jumlah dibayarkan</span>
-                <div className="flex items-center border border-slate-300 rounded-lg px-2 py-0.5 w-32 bg-white">
+                <div className="flex items-center border border-slate-300 rounded-lg px-2 py-1 w-36 bg-white">
                   <span className="text-[10px] text-slate-400 mr-1">Rp</span>
                   <input
                     type="number"
@@ -564,7 +589,7 @@ export default function InvoicePage() {
                 </div>
               </div>
 
-              <hr className="border-slate-200 my-1" />
+              <hr className="border-slate-200 my-1.5" />
 
               <div className="flex justify-between items-center text-base font-black text-slate-900">
                 <span>Sisa</span>
